@@ -1,0 +1,76 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           pi-calculus
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/slemus9/pi-calculus#readme>
+homepage:       https://github.com/slemus9/pi-calculus#readme
+bug-reports:    https://github.com/slemus9/pi-calculus/issues
+author:         Sebastián Lemus Cadena
+maintainer:     example@example.com
+copyright:      2023 Sebastián Lemus Cadena
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/slemus9/pi-calculus
+
+library
+  exposed-modules:
+      Common.Parser
+      Pi
+      Pi.Language
+      Pi.Lexer
+      Pi.Parser
+      Pi.Printer
+      Pi.Reducer
+  other-modules:
+      Paths_pi_calculus
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , parsec
+    , text
+  default-language: Haskell2010
+
+executable pi-calculus-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_pi_calculus
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , parsec
+    , pi-calculus
+    , text
+  default-language: Haskell2010
+
+test-suite pi-calculus-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_pi_calculus
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , parsec
+    , pi-calculus
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , text
+  default-language: Haskell2010
